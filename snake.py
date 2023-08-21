@@ -29,6 +29,7 @@ def main():
         snake.update()
         if check_collision(snake, food):
             snake.grow()
+            snake.size += 1
             score += 1
             food = Food()
             if score % 5 == 0:
@@ -42,7 +43,13 @@ def main():
             score += 5
             big_food = None
 
+        def draw_score(screen, score):
+            font = pygame.font.Font(None, 36)
+            text = font.render("Score: " + str(score), 1, (255, 255, 255))
+            screen.blit(text, (0, 0))
+
         screen.fill((0, 0, 0))
+        draw_score(screen, score)
         snake.draw(screen)
         food.draw(screen)
         if big_food:
