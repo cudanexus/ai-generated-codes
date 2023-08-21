@@ -30,8 +30,7 @@ class Snake(GameObject):
         for i in range(self.length):
             pygame.draw.rect(surface, (255, 255, 255), (self.x, self.y, self.size, self.size))
 
-    def grow(self):
-        self.length += 1
+    # Removed grow method
 
 class Food(GameObject):
     def __init__(self):
