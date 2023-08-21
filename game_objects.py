@@ -14,6 +14,7 @@ class Snake(GameObject):
     def __init__(self):
         super().__init__(400, 300, 20)
         self.direction = pygame.K_RIGHT
+        self.length = 1
 
     def update(self):
         if self.direction == pygame.K_UP:
@@ -26,7 +27,11 @@ class Snake(GameObject):
             self.x += self.size
 
     def draw(self, surface):
-        pygame.draw.rect(surface, (255, 255, 255), (self.x, self.y, self.size, self.size))
+        for i in range(self.length):
+            pygame.draw.rect(surface, (255, 255, 255), (self.x, self.y, self.size, self.size))
+
+    def grow(self):
+        self.length += 1
 
 class Food(GameObject):
     def __init__(self):
