@@ -14,6 +14,15 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_UP:
+                    snake.direction = pygame.K_UP
+                elif event.key == pygame.K_DOWN:
+                    snake.direction = pygame.K_DOWN
+                elif event.key == pygame.K_LEFT:
+                    snake.direction = pygame.K_LEFT
+                elif event.key == pygame.K_RIGHT:
+                    snake.direction = pygame.K_RIGHT
 
         snake.update()
         if check_collision(snake, food):
