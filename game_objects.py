@@ -29,6 +29,8 @@ class Snake(GameObject):
             new_pos = (self.x + self.size, self.y)
         # Add new position to start of body
         self.body.insert(0, new_pos)
+        # Update head position
+        self.x, self.y = new_pos
         # If not growing, remove last position from body
         if not self.grow:
             self.body.pop()
