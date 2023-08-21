@@ -37,6 +37,16 @@ class Snake(GameObject):
         else:
             self.grow = False  # Reset grow flag
 
+        # Check if snake has crossed the border
+        if self.x >= 800:
+            self.x = 0
+        elif self.x < 0:
+            self.x = 800 - self.size
+        if self.y >= 600:
+            self.y = 0
+        elif self.y < 0:
+            self.y = 600 - self.size
+
     def draw(self, surface):
         for pos in self.body:
             pygame.draw.rect(surface, (255, 255, 255), (*pos, self.size, self.size))
