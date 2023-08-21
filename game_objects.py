@@ -48,7 +48,10 @@ class Snake(GameObject):
             self.y = 600 - self.size
 
     def draw(self, surface):
-        for pos in self.body:
+        # Draw the head
+        pygame.draw.rect(surface, (255, 0, 0), (*self.body[0], self.size, self.size))
+        # Draw the rest of the body
+        for pos in self.body[1:]:
             pygame.draw.rect(surface, (255, 255, 255), (*pos, self.size, self.size))
 
     # Removed grow method
