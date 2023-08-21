@@ -39,3 +39,11 @@ class Food(GameObject):
 
     def draw(self, surface):
         pygame.draw.rect(surface, (255, 0, 0), (self.x, self.y, self.size, self.size))
+
+class BigFood(GameObject):
+    def __init__(self):
+        super().__init__(random.randint(0, 800), random.randint(0, 600), 40)
+        self.timer = pygame.time.get_ticks()
+
+    def draw(self, surface):
+        pygame.draw.rect(surface, (0, 255, 0), (self.x, self.y, self.size, self.size))

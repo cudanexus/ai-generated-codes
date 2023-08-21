@@ -9,6 +9,8 @@ def main():
 
     snake = Snake()
     food = Food()
+    big_food = None
+    score = 0
 
     while True:
         for event in pygame.event.get():
@@ -27,11 +29,24 @@ def main():
         snake.update()
         if check_collision(snake, food):
             snake.grow()
+            score += 1
             food = Food()
+            if score % 5 == 0:
+                big_food = BigFood()
+
+        if big_food and pygame.time.get_ticks() - big_food.timer > 10000:
+            big_food = None
+
+        if big_food and check_collision(snake, big_food):
+            snake.grow()
+            score += 5
+            big_food = None
 
         screen.fill((0, 0, 0))
         snake.draw(screen)
         food.draw(screen)
+        if big_food:
+            big_food.draw(screen)
         pygame.display.flip()
         clock.tick(30)
 
