@@ -1,5 +1,5 @@
 import pygame
-from game_objects import Snake, Food
+from game_objects import Snake, Food, BigFood
 from game_utils import check_collision
 
 def main():
