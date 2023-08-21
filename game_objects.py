@@ -14,21 +14,30 @@ class Snake(GameObject):
     def __init__(self):
         super().__init__(400, 300, 20)
         self.direction = pygame.K_RIGHT
-        self.length = 1
+        self.body = [(self.x, self.y)]  # Body is a list of positions
+        self.grow = False
 
     def update(self):
+        # Calculate new position
         if self.direction == pygame.K_UP:
-            self.y -= self.size
+            new_pos = (self.x, self.y - self.size)
         elif self.direction == pygame.K_DOWN:
-            self.y += self.size
+            new_pos = (self.x, self.y + self.size)
         elif self.direction == pygame.K_LEFT:
-            self.x -= self.size
+            new_pos = (self.x - self.size, self.y)
         elif self.direction == pygame.K_RIGHT:
-            self.x += self.size
+            new_pos = (self.x + self.size, self.y)
+        # Add new position to start of body
+        self.body.insert(0, new_pos)
+        # If not growing, remove last position from body
+        if not self.grow:
+            self.body.pop()
+        else:
+            self.grow = False  # Reset grow flag
 
     def draw(self, surface):
-        for i in range(self.length):
-            pygame.draw.rect(surface, (255, 255, 255), (self.x, self.y, self.size, self.size))
+        for pos in self.body:
+            pygame.draw.rect(surface, (255, 255, 255), (*pos, self.size, self.size))
 
     # Removed grow method
 

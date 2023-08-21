@@ -28,7 +28,7 @@ def main():
 
         snake.update()
         if check_collision(snake, food):
-            snake.length += 1  # Increase length directly
+            snake.grow = True  # Set grow flag
             score += 1
             food = Food()
             if score % 5 == 0:
@@ -38,7 +38,7 @@ def main():
             big_food = None
 
         if big_food and check_collision(snake, big_food):
-            snake.length += 5  # Increase length directly
+            snake.grow = True  # Set grow flag
             score += 5
             big_food = None
 
