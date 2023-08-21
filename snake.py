@@ -17,13 +17,13 @@ def main():
             if event.type == pygame.QUIT:
                 return
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_UP:
+                if event.key == pygame.K_UP and snake.direction != pygame.K_DOWN:
                     snake.direction = pygame.K_UP
-                elif event.key == pygame.K_DOWN:
+                elif event.key == pygame.K_DOWN and snake.direction != pygame.K_UP:
                     snake.direction = pygame.K_DOWN
-                elif event.key == pygame.K_LEFT:
+                elif event.key == pygame.K_LEFT and snake.direction != pygame.K_RIGHT:
                     snake.direction = pygame.K_LEFT
-                elif event.key == pygame.K_RIGHT:
+                elif event.key == pygame.K_RIGHT and snake.direction != pygame.K_LEFT:
                     snake.direction = pygame.K_RIGHT
 
         snake.update()
